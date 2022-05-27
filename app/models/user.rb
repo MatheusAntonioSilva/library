@@ -2,6 +2,10 @@ class ::User < ::ApplicationRecord
 
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
+  has_many :books
+  has_many :authors
+  has_many :users_favorite_books
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self

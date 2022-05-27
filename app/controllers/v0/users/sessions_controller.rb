@@ -9,6 +9,6 @@ class ::V0::Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    render json: resource, status: :ok, serializer: ::V0::SessionSerializer::SignOut
+    render json: {}, status: :ok, serializer: ::V0::SessionSerializer::SignOut
   end
 end
