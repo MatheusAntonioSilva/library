@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_023413) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_authors_on_name"
     t.index ["user_id"], name: "index_authors_on_user_id"
   end
 
@@ -23,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_023413) do
     t.string "title", null: false
     t.text "description", null: false
     t.string "public_url", null: false
+    t.string "file_name", null: false
     t.bigint "user_id", null: false
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false

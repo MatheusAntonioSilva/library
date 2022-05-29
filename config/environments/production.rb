@@ -10,7 +10,10 @@ Rails.application.configure do
   config.app.databases.default.password = Rails.application.credentials.config[:database][:password]
   config.app.databases.default.host = 'library_db'
   config.app.databases.default.port = '3306'
-  config.app.databases.default.database = 'library_db_development'
+  config.app.databases.default.database = 'library_db_production'
+
+  config.app.aws.access_key_id = Rails.application.credentials.config[:aws][:access_key_id]
+  config.app.aws.secret_key_id = Rails.application.credentials.config[:aws][:secret_key_id]
 
   # Code is not reloaded between requests.
   config.cache_classes = true

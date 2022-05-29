@@ -29,6 +29,7 @@ module Library
     config.middleware.use config.session_store, config.session_options
 
     config.app = OpenStruct.new
+    config.app.aws = OpenStruct.new
     config.app.databases = OpenStruct.new
     config.app.databases.default = OpenStruct.new
 

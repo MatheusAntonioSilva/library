@@ -52,6 +52,8 @@ gem "bootsnap", require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'aws-sdk'
+gem 'aws-sdk-s3'
 
 group :development, :pipeline do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
