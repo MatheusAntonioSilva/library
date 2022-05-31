@@ -1,19 +1,15 @@
 require 'rails_helper'
 
-describe ::V0::BooksController, type: :controller do
+describe ::V0::UsersFavoriteBooksController, type: :controller do
 
   describe '#create' do
     let(:file) { Tempfile.new }
-    let(:user_kind) { ::User::LIBRARIAN }
+    let(:user_kind) { ::User::READER }
+
     let(:user) { create(:user, kind: user_kind) }
-    let(:params) do
-      {
-        title: 'Test',
-        description: 'Test Pipe',
-        author: { name: 'Test' },
-        file: file
-      }
-    end
+    let(:book_id) { create(:book, user_id: user.id, author_id: create(:author, user_id: user.id).id).id }
+
+    let(:params) { { book_id: book_id } }
 
     context 'when user is not authenticated' do
       before do
@@ -37,13 +33,13 @@ describe ::V0::BooksController, type: :controller do
       context 'successfully' do
         it 'responses 201' do
           expect(response.code).to eq('201')
-          expect(JSON.parse(response.body).keys).to eq(["id", "title", "description", "public_url", "user", "author", "created_at", "updated_at"])
+          expect(JSON.parse(response.body).keys).to eq(["id", "user", "book", "created_at", "updated_at"])
         end
       end
 
       context 'when goes something wrong' do
         context 'when user cannot create books' do
-          let(:user_kind) { ::User::READER }
+          let(:user_kind) { ::User::LIBRARIAN }
 
           it 'responses 401' do
             expect(response.code).to eq('401')
