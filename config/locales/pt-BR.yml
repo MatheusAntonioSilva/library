@@ -1,5 +1,42 @@
 pt-BR:
   activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Confirmação enviada em
+        confirmation_token: Token de confirmação
+        confirmed_at: Confirmado em
+        created_at: Criado em
+        current_password: Senha atual
+        current_sign_in_at: Atualmente logado em
+        current_sign_in_ip: IP do acesso atual
+        email: E-mail
+        encrypted_password: Senha criptografada
+        failed_attempts: Tentativas sem sucesso
+        last_sign_in_at: Último acesso em
+        last_sign_in_ip: Último IP de acesso
+        locked_at: Bloqueado em
+        password: Senha
+        password_confirmation: Confirme sua senha
+        remember_created_at: Lembrar criado em
+        remember_me: Lembre-se de mim
+        reset_password_sent_at: Resetar senha enviado em
+        reset_password_token: Resetar token de senha
+        sign_in_count: Contagem de acessos
+        unconfirmed_email: E-mail não confirmado
+        unlock_token: Token de desbloqueio
+        updated_at: Atualizado em
+      book:
+        user_id: Usuário
+        author: 'Autor'
+        user:
+          one: Usuário
+          other: Usuários
+      users_favorite_book:
+        book: 'Livro'
+        user_id: Usuário
+        user:
+          one: Usuário
+          other: Usuários
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -108,6 +145,7 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      access_not_allowed: 'Ação não permitida'
       unauthorized: 'Você não logado, realize o login.'
       registration: 'Usuário não pode ser criado com sucesso. %{errors_detail}'
       accepted: deve ser aceito

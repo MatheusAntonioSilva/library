@@ -2,6 +2,9 @@ class ::User < ::ApplicationRecord
 
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
+  LIBRARIAN = :librarian
+  READER = :reader
+
   has_many :books
   has_many :authors
   has_many :users_favorite_books

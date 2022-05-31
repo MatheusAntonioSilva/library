@@ -11,17 +11,10 @@ module BookManager
     private
 
     def execute_creation
-      book = ::Book.new(args.slice(:title, :description).merge(user_id: user.id))
-      author = ::AuthorManager::Creator.new(user, args[:author]).create
-      book.author_id = author.id
-      book.public_url = upload_file_s3!
-      book.file_name = file_name
-
-      book.save!
-
-      book
+      validate!
+      save!
     rescue ::StandardError => e
-      raise e if @upload_file_s3.blank?
+      raise e if Rails.env.production? || @upload_file_s3.blank?
 
       obj = s3.bucket(::Book::BUCKET).object(file_name)
       obj.delete
@@ -29,7 +22,25 @@ module BookManager
       raise e
     end
 
+    def validate!
+      return if user.kind.to_sym == ::User::LIBRARIAN
+
+      raise Exceptions::AccessNotAllowedError
+    end
+
+    def save!
+      book = ::Book.new(args.slice(:title, :description).merge(user_id: user.id))
+      author = ::AuthorManager::Creator.new(user, args[:author]).create
+      book.author_id = author.id
+      book.public_url = upload_file_s3!
+      book.file_name = file_name
+
+      book.save!
+      book.reload
+    end
+
     def upload_file_s3!
+      return 'https://fake-pdf/07aasda00c25-2b06-475e-be08-4d3c42705a30.png' unless Rails.env.production?
       return @upload_file_s3 if @upload_file_s3.present?
 
       obj = s3.bucket(::Book::BUCKET).object(file_name)
