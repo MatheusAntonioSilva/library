@@ -25,7 +25,7 @@ module V0
     end
 
     def destroy
-      destroyer = ::BookManager::Destroyer.new(params[:id])
+      destroyer = ::BookManager::Destroyer.new(params[:id], user)
       render json: destroyer.destroy, serializer: ::V0::BookSerializer::Model
     end
 

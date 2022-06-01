@@ -7,8 +7,8 @@ Rails.application.configure do
   config.app.databases.default.encoding = 'utf8mb4'
   config.app.databases.default.pool = ENV.fetch("RAILS_MAX_THREADS") { 5 }
   config.app.databases.default.username = 'root'
-  config.app.databases.default.password = Rails.application.credentials.config[:database][:password]
-  config.app.databases.default.host = 'library_db'
+  config.app.databases.default.password = ENV['DATABASE_PASSWORD']
+  config.app.databases.default.host = 'mysql2://be296617dcafba:232dddfa@us-cdbr-east-05.cleardb.net/heroku_df9bf8023c1bcee?reconnect=true'
   config.app.databases.default.port = '3306'
   config.app.databases.default.database = 'library_db_production'
 

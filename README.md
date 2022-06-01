@@ -1,24 +1,93 @@
-# README
+## Backend - Biblioteca Online
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto tem a intenção da demonstração de conhecimentos referente a contrução de uma aplicação com diversas APIs backend para acesso, criação, manutenção de livros.
 
-Things you may want to cover:
+**Neste sistema poderá ser feito**
 
-* Ruby version
+- Cadastro de usuários de tipo leitor e bibliotecário
+- Gerenciamento de seção (login e logout)
+- Bibliotecários podem cadastrar, editar, apagar livros
+- Leitores poderam favoritas livros
+- **Sistema contém teste automatizados** para demonstração de conhecimento também com automatização de testes
 
-* System dependencies
+**Diferenciais**
 
-* Configuration
+- Sistema tem validações de que usuários podem ou não fazer.
+- Está hospedado em uma servidor cloud e pode ser acessado por meio do DNS:
+- Possível cadastros de livros por meio das APIs e hospedados em um s3 na aws
+- Contém teste de integração
 
-* Database creation
+---
 
-* Database initialization
+### Casos de uso
 
-* How to run the test suite
+#### Cadastro de Contas
 
-* Services (job queues, cache servers, search engines, etc.)
+- Tentar cadastrar conta sem **first_name**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta sem **last_name**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta sem **email**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta sem **password**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta sem **password_confirmation**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta com **password** e **password_confirmation**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
+- Tentar cadastrar conta com **kind** com conteúdo diferente de **librarian** e **reader**
+  - Deverá retornar uma mensagem que não foi possível cadastrar a conta
 
-* Deployment instructions
+**Com os dados atendendo as validações acima deverá ser criado a conta com sucesso**
 
-* ...
+#### Cadastro de Livros
+
+- Só usuários autenticados devem podem realização a ação
+- Se um **leitor** tentar cadastrar um livro
+  - Não deverá ser permitido
+- Se tentar cadastrar um livro sem título
+  - Deverá retornar uma mensagem que não foi possível cadastrar a livro
+- Se tentar cadastrar um livro sem descrição
+  - Deverá retornar uma mensagem que não foi possível cadastrar a livro
+- Se tentar cadastrar um livro sem autor
+  - Deverá retornar uma mensagem que não foi possível cadastrar a livro
+- Usuário deve estar autenticado para cadastrar o livro
+
+**Caso seja um bibliotecário e atenda as condições acima deverá ser permitido o cadastro**
+
+### Busca por livros
+
+- Só usuários autenticados devem podem realização a ação
+- Deve ser possível buscar por **título, descrição e autor**
+- Também deve ser possível buscar por paginação os livros
+
+#### Edição de Livros
+
+- Só usuários autenticados devem podem realização a ação
+- Se um **leitor** tentar editar um livro
+  - Não deverá ser permitido
+- Se tentar editar um livro sem título
+  - Deverá retornar uma mensagem que não foi possível editar a livro
+- Se tentar cadastrar um livro sem descrição
+  - Deverá retornar uma mensagem que não foi possível editar a livro
+- Se tentar editar um livro sem autor
+  - Deverá retornar uma mensagem que não foi possível editar a livro
+- Usuário deve estar autenticado para editar o livro
+
+**Caso seja um bibliotecário e atenda as condições acima deverá ser permitido a edição**
+
+### Exclusão de livros livros
+
+- Se um **leitor** tentar excluir um livro
+  - Não deverá ser permitido
+
+**Caso seja um bibliotecário deverá ser permitido a exclusão**
+
+---
+
+### Estrutura do Banco de Dados
+
+
+
+
+

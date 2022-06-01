@@ -11,8 +11,9 @@ module BookManager
     private
 
     def execute_updater
-      @old_file = old_file
+      validate!
 
+      @old_file = old_file
       author = ::AuthorManager::Creator.new(user, args[:author]).create
       instance.update!(title: args[:title], description: args[:description], user_id: user.id,
                        author_id: author.id, public_url: upload_file_s3!, file_name: file_name)
@@ -27,6 +28,12 @@ module BookManager
       old_file.upload_file(args[:file], content_type: args[:file].content_type)
 
       raise e
+    end
+
+    def validate!
+      return if user.kind.to_sym == ::User::LIBRARIAN
+
+      raise Exceptions::AccessNotAllowedError
     end
 
     def instance
