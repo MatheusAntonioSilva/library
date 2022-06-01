@@ -13,7 +13,7 @@ Este projeto tem a intenção da demonstração de conhecimentos referente a con
 **Diferenciais**
 
 - Sistema tem validações de que usuários podem ou não fazer.
-- Está hospedado em uma servidor cloud e pode ser acessado por meio do DNS:
+- Está hospedado em uma servidor cloud e pode ser acessado por meio do DNS: https://libraryapp-rails.herokuapp.com/
 - Possível cadastros de livros por meio das APIs e hospedados em um s3 na aws
 - Contém teste de integração
 
