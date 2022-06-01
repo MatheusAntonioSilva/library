@@ -5,7 +5,7 @@ module AuthorManager
 
     def initialize(user, args)
       @user = user
-      @args = args
+      @args = args.to_h
     end
 
     private

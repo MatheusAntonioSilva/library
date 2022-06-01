@@ -13,13 +13,6 @@ module BookManager
     def execute_creation
       validate!
       save!
-    rescue ::StandardError => e
-      raise e if Rails.env.production? || @upload_file_s3.blank?
-
-      obj = s3.bucket(::Book::BUCKET).object(file_name)
-      obj.delete
-
-      raise e
     end
 
     def validate!
@@ -37,6 +30,13 @@ module BookManager
 
       book.save!
       book.reload
+    rescue ::StandardError => e
+      raise e if Rails.env.production? || @upload_file_s3.blank?
+
+      obj = s3.bucket(::Book::BUCKET).object(file_name)
+      obj.delete
+
+      raise e
     end
 
     def upload_file_s3!
@@ -45,6 +45,8 @@ module BookManager
       obj = s3.bucket(::Book::BUCKET).object(file_name)
       obj.upload_file(args[:file], content_type: args[:file].content_type)
       @upload_file_s3 = obj.public_url
+    rescue StandardError
+      raise ::Exceptions::FileError
     end
 
     def s3

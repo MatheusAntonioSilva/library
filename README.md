@@ -19,7 +19,11 @@ Este projeto tem a intenção da demonstração de conhecimentos referente a con
 
 **Disponibilização das API e Como usálas em:**
 
+https://github.com/MatheusAntonioSilva/library/blob/main/Library.postman_collection.json
 
+**Testes de integração em**
+
+https://github.com/MatheusAntonioSilva/library-integration-tests
 
 ---
 

@@ -145,7 +145,8 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      access_not_allowed: 'Ação não permitida'
+      file_error: 'Problema ao salvar livro, tente novamente mais tarde.'
+      access_not_allowed: 'Ação não permitida.'
       unauthorized: 'Você não logado, realize o login.'
       registration: 'Usuário não pode ser criado com sucesso. %{errors_detail}'
       accepted: deve ser aceito
