@@ -25,6 +25,32 @@ https://github.com/MatheusAntonioSilva/library/blob/main/Library.postman_collect
 
 https://github.com/MatheusAntonioSilva/library-integration-tests
 
+**Setup da Aplicação**
+
+Esta aplicação para ser executada é necessário ter em seu computador apenas o `docker` e o `docker-compose`.
+
+---
+
+Instalando as images:
+
+```
+docker-compose build
+```
+
+Agora, criação do bano de dados:
+
+```
+docker-compose run library_app bash
+rails db:create
+rails db:migrate
+```
+
+Por ultimo, vamos subir os containers:
+
+```
+docker-compose up
+```
+
 ---
 
 ### Casos de uso
