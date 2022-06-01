@@ -17,6 +17,10 @@ Este projeto tem a intenção da demonstração de conhecimentos referente a con
 - Possível cadastros de livros por meio das APIs e hospedados em um s3 na aws
 - Contém teste de integração
 
+**Disponibilização das API e Como usálas em:**
+
+
+
 ---
 
 ### Casos de uso
@@ -87,6 +91,7 @@ Este projeto tem a intenção da demonstração de conhecimentos referente a con
 
 ### Estrutura do Banco de Dados
 
+![Untitled](https://user-images.githubusercontent.com/25187342/171324934-c3a81e5c-322c-4310-9002-826f8f3721ce.png)
 
 
 
