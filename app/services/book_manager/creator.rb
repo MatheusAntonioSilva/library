@@ -56,7 +56,7 @@ module BookManager
     end
 
     def file_name
-      @file_name ||= "#{::SecureRandom.uuid}.png"
+      @file_name ||= "#{::SecureRandom.uuid}"
     end
   end
 end
