@@ -5,6 +5,7 @@ module BookManager
 
     def initialize(id, user, args)
       @user = user
+
       super(id, args)
     end
 
